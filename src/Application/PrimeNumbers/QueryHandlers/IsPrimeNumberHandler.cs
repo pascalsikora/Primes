@@ -1,10 +1,11 @@
 namespace Primes.Application.PrimeNumbers.QueryHandlers;
 
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Primes.Application.PrimeNumbers.Interfaces;
 using Primes.Application.PrimeNumbers.Queries;
 
-internal sealed class IsPrimeNumberHandler(ILogger<IsPrimeNumberHandler> logger, IPrimesService service) : MediatR.IRequestHandler<IsPrimeNumber, string>
+internal sealed class IsPrimeNumberHandler(ILogger<IsPrimeNumberHandler> logger, IPrimesService service) : IRequestHandler<IsPrimeNumber, string>
 {
     public async Task<string> Handle(IsPrimeNumber request, CancellationToken cancellationToken)
     {

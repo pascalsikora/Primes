@@ -1,6 +1,13 @@
 @Primes.WebApi_HostAddress = http://localhost:5103
 
-GET {{Primes.WebApi_HostAddress}}/weatherforecast/
+### Check is a prime number - true
+GET {{Primes.WebApi_HostAddress}}/PrimeNumber/17
 Accept: application/json
 
-###
+### Check is a prime number - false
+GET {{Primes.WebApi_HostAddress}}/PrimeNumber/800
+Accept: application/json
+
+### Get next prime number
+GET {{Primes.WebApi_HostAddress}}/PrimeNumber/next-after/17
+Accept: application/json

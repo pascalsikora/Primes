@@ -1,6 +1,8 @@
 namespace Primes.Application.PrimeNumbers.Queries;
 
-public sealed record class GetNextPrimeNumber : MediatR.IRequest<string>
+using System.Numerics;
+using MediatR;
+public sealed record class GetNextPrimeNumber : IRequest<string>
 {
-    public required int After { get; init; }
+    public required BigInteger After { get; init; }
 }
