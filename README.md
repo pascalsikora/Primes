@@ -4,7 +4,7 @@
 ```powershell
 cd Primes
 git init
-dotnet new globaljson --sdk-version=8.0.302  --roll-forward latestFeature
+dotnet new globaljson --sdk-version=9.0.201  --roll-forward latestFeature
 dotnet new sln --name Primes
 ```
 
