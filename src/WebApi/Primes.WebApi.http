@@ -1,0 +1,6 @@
+@Primes.WebApi_HostAddress = http://localhost:5103
+
+GET {{Primes.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
