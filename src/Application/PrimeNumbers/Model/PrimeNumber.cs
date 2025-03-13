@@ -1,4 +1,4 @@
-namespace Primes.Application.Primes.Model;
+namespace Primes.Application.PrimeNumbers.Model;
 
 public class PrimeNumber
 {

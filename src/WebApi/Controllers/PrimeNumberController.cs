@@ -2,30 +2,34 @@ namespace Primes.WebApi.Controllers;
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Primes.Application.Primes.Model;
+using Primes.Application.PrimeNumbers.Queries;
 
 [ApiController, Route("[controller]")]
 public class PrimeNumberController(IMediator mediator) : ControllerBase
 {
-    [HttpGet("{value}", Name = "IsPrimeNumber")]
-    public PrimeNumber Get(int value)
+    [HttpGet("next-after/{value}", Name = "GetNextPrimeNumber")]
+    public async Task<string> GetNextPrimeNumberAsync([FromQuery] int after, CancellationToken cancellationToken)
     {
-        PrimeNumber primeNumber = new()
+        var query = new GetNextPrimeNumber
         {
-            value = value,
+            After = after,
         };
 
-        return primeNumber;
+        var result = await mediator.Send(query, cancellationToken);
+
+        return result;
     }
 
-    [HttpGet("next-after/{value}", Name = "NextPrimeNumber")]
-    public PrimeNumber GetNext([FromQuery] int value)
+    [HttpGet("{value}", Name = "IsPrimeNumber")]
+    public async Task<string> IsPrimeNumberAsync(int value, CancellationToken cancellationToken)
     {
-        PrimeNumber primeNumber = new()
+        var query = new IsPrimeNumber
         {
-            value = value,
+            Value = value,
         };
 
-        return primeNumber;
+        var result = await mediator.Send(query, cancellationToken);
+
+        return result;
     }
 }
